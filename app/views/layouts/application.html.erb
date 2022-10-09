@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://kit.fontawesome.com/ff2c5877f3.js" crossorigin="anonymous"></script>
     <title>Bookers2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -10,34 +11,80 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-     <% if user_signed_in? %>
-
-      <li>
-        <%= link_to "Users", "/users" %>
-      </li>
-      <li>
-        <%= link_to "Books", "/books" %>
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-     <% else %>
-      <li>
-        <%= link_to "Home", "/" %>
-      </li>
-      <li>
-        <%= link_to "About", "/homes/about" %>
-      </li>
-      <li>
-        <%= link_to "Sing up", new_user_registration_path %>
-      </li>
-      <li>
-       <%= link_to "Log in", new_user_session_path %>
-      </li>
-     <% end %>
-    </header>
+  <body class="d-flex flex-column vh-100">
+   <header class="shadow-sm">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+       <a class="navbar-brand" href="/"><span>Bookers</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-toggle="collapse"
+        date-terget="navbarNavDropdown" aria-controls="navbarNavDropdown" aros-expanded="fals" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+      </button>
+     
+       <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+         <% if user_signed_in? %>
+         
+　　　    <li>
+           <a class="nav-link text-light", herf="/users/<%= current_user.id %>" >
+　　
+            Home
+           </a>
+　　　    </li>
+          <li>
+           <a class="nav-link text-light", herf="/users" >
+　　　      Users
+　　　     </a>
+          </li>
+          <li>
+           <a class="nav-link text-light", herf="/books" >
+            Books
+           </a>
+          </li>
+          <li>
+           <a class="nav-link text-light", rel="nofollow" date-method="delete" herf="/users/sing_out" >
+            Logout
+           </a>
+          </li>
+         <% else %>
+          <li>
+           <a class="nav-link text-light", herf="/" >
+            "Home"
+           </a>
+          </li>
+          <li>
+           <a class="nav-link text-light", herf="/homes/about" >
+            About
+           </a>
+          </li>
+          <li>
+           <a class="nav-link text-light", herf="/users/sinup" >
+            Sinup
+           </a>
+          </li>
+          <li>
+           <a class="nav-link text-light", herf="/users/sing_in" >
+            Login
+           </a>
+          </li>
+         <% end %>
+        </ul>
+       </div>
+      </div>
+     </nav>
+   </header>
+   
+   
+   <footer>
+    <div class="container mt-5">
+  	 <div class="row">
+    	<div class="mx-auto">
+    	 <p>CopyRight Infratop.inc</p>
+    	</div>
+     </div>
+    </div>
+   </footer>
     <%= yield %>
+     
   </body>
 </html>
