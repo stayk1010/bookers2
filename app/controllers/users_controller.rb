@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   private
 
   def users_params
-    params.require(:user).permit(:name, :profile_image, :profile)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
   # def correct_user
   #   @book = Book.find(params[:id])
